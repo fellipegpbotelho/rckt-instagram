@@ -16,12 +16,12 @@ class Feed extends Component {
   };
 
   async componentDidMount() {
-    this.registerToSocker();
+    this.registerToSocket();
     const response = await api.get('posts');
     this.setState({ feed: response.data });
   }
 
-  registerToSocker = () => {
+  registerToSocket = () => {
     const socket = io('http://localhost:3333');
 
     socket.on('post', (newPost) => {
